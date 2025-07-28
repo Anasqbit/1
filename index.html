@@ -41,19 +41,17 @@
             padding: 20px;
             overflow-x: hidden;
             position: relative;
+            /* خلفية متدرجة تتحرك تدريجياً */
+            background: linear-gradient(45deg, #ff6f61, #6a1b9a, #ff8c00, #ff6347);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
         }
         
-        body.dark-mode {
-            color: var(--text-dark);
-        }
-        
-        #background-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
+        /* تحريك الخلفية بشكل تدريجي */
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         
         .container {
@@ -86,8 +84,8 @@
         
         .logo i {
             font-size: 3rem;
-            color: var(--primary);
-            background: rgba(108, 99, 255, 0.1);
+            color: white;
+            background: rgba(255, 255, 255, 0.2);
             width: 90px;
             height: 90px;
             display: flex;
@@ -95,31 +93,31 @@
             justify-content: center;
             border-radius: 50%;
             animation: pulse 3s infinite;
-            box-shadow: 0 0 0 0 rgba(108, 99, 255, 0.5);
+            box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.5);
             backdrop-filter: blur(5px);
-            border: 1px solid rgba(108, 99, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
         @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(108, 99, 255, 0.5); }
-            70% { box-shadow: 0 0 0 20px rgba(108, 99, 255, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(108, 99, 255, 0); }
+            0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.5); }
+            70% { box-shadow: 0 0 0 20px rgba(255, 255, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
         }
         
         h1 {
             font-size: 2.8rem;
-            background: linear-gradient(to right, var(--primary), var(--accent));
+            background: linear-gradient(to right, white, #f0f0f0);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
             margin-bottom: 15px;
             letter-spacing: -1px;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
         }
         
         .subtitle {
             font-size: 1.2rem;
-            color: var(--gray);
+            color: rgba(255, 255, 255, 0.9);
             max-width: 650px;
             margin: 0 auto 20px;
             line-height: 1.6;
@@ -129,12 +127,8 @@
             background: rgba(255, 255, 255, 0.1);
         }
         
-        .dark-mode .subtitle {
-            background: rgba(0, 0, 0, 0.1);
-        }
-        
         .card {
-            background: var(--card-light);
+            background: rgba(255, 255, 255, 0.15);
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
             padding: 35px;
@@ -144,11 +138,6 @@
             overflow: hidden;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .dark-mode .card {
-            background: var(--card-dark);
-            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .card::before {
@@ -176,48 +165,37 @@
             display: block;
             margin-bottom: 15px;
             font-weight: 600;
-            color: var(--primary);
+            color: white;
             display: flex;
             align-items: center;
             gap: 12px;
             font-size: 1.1rem;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-        }
-        
-        .dark-mode label {
-            color: var(--accent);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
         }
         
         textarea {
             width: 100%;
             padding: 20px;
             border-radius: 16px;
-            border: 2px solid rgba(108, 99, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
             font-size: 1.15rem;
             resize: vertical;
             min-height: 170px;
-            background: rgba(248, 250, 252, 0.6);
-            color: var(--text-light);
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
             transition: var(--transition);
             line-height: 1.6;
             backdrop-filter: blur(5px);
         }
         
-        .dark-mode textarea {
-            background: rgba(45, 55, 72, 0.6);
-            border-color: rgba(123, 104, 238, 0.3);
-            color: var(--text-dark);
+        textarea::placeholder {
+            color: rgba(255, 255, 255, 0.7);
         }
         
         textarea:focus {
             outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 4px rgba(108, 99, 255, 0.2);
-        }
-        
-        .dark-mode textarea:focus {
-            border-color: var(--accent);
-            box-shadow: 0 0 0 4px rgba(123, 104, 238, 0.2);
+            border-color: white;
+            box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.2);
         }
         
         .buttons {
@@ -249,8 +227,9 @@
             overflow: hidden;
             z-index: 1;
             backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            color: white;
         }
         
         button::before {
@@ -271,26 +250,19 @@
         
         button:hover {
             transform: translateY(-5px) scale(1.03);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-        }
-        
-        .dark-mode button:hover {
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
         }
         
         .swap-btn {
-            background: rgba(74, 68, 181, 0.8);
-            color: white;
+            background: rgba(74, 68, 181, 0.7);
         }
         
         .copy-btn {
-            background: rgba(80, 200, 120, 0.8);
-            color: white;
+            background: rgba(80, 200, 120, 0.7);
         }
         
         .clear-btn {
-            background: rgba(255, 107, 107, 0.8);
-            color: white;
+            background: rgba(255, 107, 107, 0.7);
         }
         
         .theme-toggle {
@@ -300,7 +272,7 @@
             width: 60px;
             height: 60px;
             border-radius: 50%;
-            background: var(--warning);
+            background: rgba(255, 215, 59, 0.8);
             color: #333;
             display: flex;
             align-items: center;
@@ -334,12 +306,8 @@
             align-items: center;
             gap: 15px;
             margin-bottom: 25px;
-            color: var(--primary);
+            color: white;
             font-size: 1.5rem;
-        }
-        
-        .dark-mode .keyboard-guide h2 {
-            color: var(--accent);
         }
         
         .key-grid {
@@ -349,13 +317,13 @@
         }
         
         .key-item {
-            background: rgba(241, 245, 249, 0.7);
+            background: rgba(255, 255, 255, 0.15);
             border-radius: 14px;
             padding: 15px;
             text-align: center;
             font-weight: 600;
             transition: var(--transition);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             position: relative;
             overflow: hidden;
             transform: translateY(0);
@@ -365,28 +333,15 @@
         
         .key-item:hover {
             transform: translateY(-7px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            background: rgba(241, 245, 249, 0.9);
-        }
-        
-        .dark-mode .key-item {
-            background: rgba(45, 55, 72, 0.7);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-        
-        .dark-mode .key-item:hover {
-            background: rgba(45, 55, 72, 0.9);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.25);
         }
         
         .key-item .eng {
-            color: var(--primary);
+            color: white;
             font-size: 1.4rem;
             margin-bottom: 8px;
             font-weight: 700;
-        }
-        
-        .dark-mode .key-item .eng {
-            color: var(--accent);
         }
         
         .key-item .arab {
@@ -394,12 +349,13 @@
             font-family: 'Segoe UI', Tahoma, sans-serif;
             line-height: 1;
             margin-top: 5px;
+            color: white;
         }
         
         .guide-note {
             text-align: center;
             margin-top: 25px;
-            color: var(--gray);
+            color: rgba(255, 255, 255, 0.9);
             font-size: 1rem;
             line-height: 1.6;
         }
@@ -407,18 +363,13 @@
         footer {
             text-align: center;
             padding: 25px;
-            color: var(--gray);
+            color: rgba(255, 255, 255, 0.8);
             font-size: 1rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             margin-top: 20px;
             backdrop-filter: blur(5px);
             border-radius: var(--border-radius);
             background: rgba(255, 255, 255, 0.1);
-        }
-        
-        .dark-mode footer {
-            background: rgba(0, 0, 0, 0.1);
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
         
         .notification {
@@ -482,8 +433,6 @@
     </style>
 </head>
 <body>
-    <canvas id="background-canvas"></canvas>
-    
     <button class="theme-toggle" id="themeToggle">
         <i class="fas fa-moon"></i>
     </button>
@@ -565,135 +514,6 @@
         const themeToggle = document.getElementById('themeToggle');
         const notification = document.getElementById('notification');
         const keyboardGuide = document.getElementById('keyboardGuide');
-        const canvas = document.getElementById('background-canvas');
-        const ctx = canvas.getContext('2d');
-
-        // Set canvas size
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        
-        // Initialize canvas
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
-
-        // Particle system
-        const particles = [];
-        const particleCount = 150;
-        const colors = [
-            {r: 108, g: 99, b: 255},  // primary
-            {r: 123, g: 104, b: 238}, // accent
-            {r: 80, g: 200, b: 120},  // success
-            {r: 255, g: 215, b: 59},  // warning
-            {r: 255, g: 107, b: 107}  // danger
-        ];
-
-        // Particle class
-        class Particle {
-            constructor() {
-                this.reset();
-                this.size = Math.random() * 3 + 1;
-            }
-            
-            reset() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.vx = (Math.random() - 0.5) * 0.5;
-                this.vy = (Math.random() - 0.5) * 0.5;
-                this.color = colors[Math.floor(Math.random() * colors.length)];
-                this.alpha = Math.random() * 0.5 + 0.1;
-                this.life = Math.random() * 300 + 100;
-                this.maxLife = this.life;
-            }
-            
-            update() {
-                this.x += this.vx;
-                this.y += this.vy;
-                
-                // Boundary check
-                if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
-                    this.reset();
-                }
-                
-                // Life cycle
-                this.life--;
-                if (this.life <= 0) {
-                    this.reset();
-                }
-            }
-            
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(${this.color.r}, ${this.color.g}, ${this.color.b}, ${this.alpha})`;
-                ctx.fill();
-                
-                // Draw glow effect
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size * 3, 0, Math.PI * 2);
-                const gradient = ctx.createRadialGradient(
-                    this.x, this.y, 0,
-                    this.x, this.y, this.size * 3
-                );
-                gradient.addColorStop(0, `rgba(${this.color.r}, ${this.color.g}, ${this.color.b}, ${this.alpha * 0.5})`);
-                gradient.addColorStop(1, `rgba(${this.color.r}, ${this.color.g}, ${this.color.b}, 0)`);
-                ctx.fillStyle = gradient;
-                ctx.fill();
-            }
-        }
-
-        // Create particles
-        for (let i = 0; i < particleCount; i++) {
-            particles.push(new Particle());
-        }
-
-        // Animate particles
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            // Draw background gradient
-            const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-            if (document.body.classList.contains('dark-mode')) {
-                gradient.addColorStop(0, '#1a1a2e');
-                gradient.addColorStop(1, '#16213e');
-            } else {
-                gradient.addColorStop(0, '#f0f4ff');
-                gradient.addColorStop(1, '#e6f0ff');
-            }
-            ctx.fillStyle = gradient;
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            
-            // Draw connection lines between particles
-            for (let i = 0; i < particles.length; i++) {
-                for (let j = i + 1; j < particles.length; j++) {
-                    const dx = particles[i].x - particles[j].x;
-                    const dy = particles[i].y - particles[j].y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-                    
-                    if (distance < 100) {
-                        const opacity = 1 - distance / 100;
-                        ctx.beginPath();
-                        ctx.strokeStyle = `rgba(150, 150, 150, ${opacity * 0.1})`;
-                        ctx.lineWidth = 0.5;
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.stroke();
-                    }
-                }
-            }
-            
-            // Update and draw particles
-            particles.forEach(particle => {
-                particle.update();
-                particle.draw();
-            });
-            
-            requestAnimationFrame(animate);
-        }
-
-        // Start animation
-        animate();
 
         // Function to convert text
         function convertText() {
@@ -778,9 +598,13 @@
             if (document.body.classList.contains('dark-mode')) {
                 icon.classList.remove('fa-moon');
                 icon.classList.add('fa-sun');
+                // Dark mode gradient
+                document.body.style.background = 'linear-gradient(45deg, #0f2027, #203a43, #2c5364)';
             } else {
                 icon.classList.remove('fa-sun');
                 icon.classList.add('fa-moon');
+                // Original gradient
+                document.body.style.background = 'linear-gradient(45deg, #ff6f61, #6a1b9a, #ff8c00, #ff6347)';
             }
             
             // Animate the toggle button
