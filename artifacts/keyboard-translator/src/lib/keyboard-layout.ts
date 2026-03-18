@@ -44,11 +44,11 @@ export const KEYBOARD_ROWS: KeyDef[][] = [
     { id: '0', en: '0', type: 'char' },
     { id: 'minus', en: '-', type: 'char' },
     { id: 'equals', en: '=', type: 'char' },
-    { id: 'backspace', label: '⌫ Bksp', type: 'action', width: 'flex-[1.6]' },
+    { id: 'backspace', label: 'Backspace', type: 'action', width: 'flex-[1.6]' },
   ],
   // Row 3 — QWERTY row
   [
-    { id: 'tab', label: 'Tab ⇥', type: 'action', width: 'flex-[1.5]' },
+    { id: 'tab', label: 'Tab', type: 'action', width: 'flex-[1.5]' },
     { id: 'q', en: 'Q', ar: 'ض', type: 'char' },
     { id: 'w', en: 'W', ar: 'ص', type: 'char' },
     { id: 'e', en: 'E', ar: 'ث', type: 'char' },
@@ -65,7 +65,7 @@ export const KEYBOARD_ROWS: KeyDef[][] = [
   ],
   // Row 4 — ASDF row
   [
-    { id: 'caps', label: 'Caps', type: 'action', width: 'flex-[1.7]' },
+    { id: 'caps', label: 'CapsLk', type: 'action', width: 'flex-[1.7]' },
     { id: 'a', en: 'A', ar: 'ش', type: 'char' },
     { id: 's', en: 'S', ar: 'س', type: 'char' },
     { id: 'd', en: 'D', ar: 'ي', type: 'char' },
@@ -77,11 +77,11 @@ export const KEYBOARD_ROWS: KeyDef[][] = [
     { id: 'l', en: 'L', ar: 'م', type: 'char' },
     { id: 'semicolon', en: ';', ar: 'ك', type: 'char' },
     { id: 'quote', en: "'", ar: 'ط', type: 'char' },
-    { id: 'enter', label: 'Enter ↵', type: 'action', width: 'flex-[2.1]' },
+    { id: 'enter', label: 'Enter', type: 'action', width: 'flex-[2.1]' },
   ],
   // Row 5 — ZXCV row
   [
-    { id: 'shift_left', label: '⇧ Shift', type: 'modifier', width: 'flex-[2.2]' },
+    { id: 'shift_left', label: 'Shift', type: 'modifier', width: 'flex-[2.2]' },
     { id: 'z', en: 'Z', ar: 'ئ', type: 'char' },
     { id: 'x', en: 'X', ar: 'ء', type: 'char' },
     { id: 'c', en: 'C', ar: 'ؤ', type: 'char' },
@@ -92,17 +92,17 @@ export const KEYBOARD_ROWS: KeyDef[][] = [
     { id: 'comma', en: ',', ar: 'و', type: 'char' },
     { id: 'period', en: '.', ar: 'ز', type: 'char' },
     { id: 'slash', en: '/', ar: 'ظ', type: 'char' },
-    { id: 'shift_right', label: '⇧ Shift', type: 'modifier', width: 'flex-[2.2]' },
+    { id: 'shift_right', label: 'Shift', type: 'modifier', width: 'flex-[2.2]' },
   ],
   // Row 6 — Bottom row
   [
     { id: 'ctrl_left', label: 'Ctrl', type: 'modifier', width: 'flex-[1.4]' },
-    { id: 'win_left', label: '⊞', type: 'modifier', width: 'flex-[1.1]' },
+    { id: 'win_left', label: 'Win', type: 'modifier', width: 'flex-[1.1]' },
     { id: 'alt_left', label: 'Alt', type: 'modifier', width: 'flex-[1.1]' },
     { id: 'space', en: ' ', label: 'Space', type: 'char', width: 'flex-[5]' },
     { id: 'alt_right', label: 'Alt', type: 'modifier', width: 'flex-[1.1]' },
-    { id: 'win_right', label: '⊞', type: 'modifier', width: 'flex-[1.1]' },
-    { id: 'menu', label: '☰', type: 'modifier', width: 'flex-[1.1]' },
+    { id: 'win_right', label: 'Win', type: 'modifier', width: 'flex-[1.1]' },
+    { id: 'menu', label: 'Menu', type: 'modifier', width: 'flex-[1.1]' },
     { id: 'ctrl_right', label: 'Ctrl', type: 'modifier', width: 'flex-[1.4]' },
   ]
 ];
