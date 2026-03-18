@@ -8,86 +8,104 @@ interface KeyboardProps {
 }
 
 export function Keyboard({ activeChars, theme }: KeyboardProps) {
-  
-  // Helper to check if a key should be highlighted
   const isKeyActive = (key: KeyDef) => {
+    if (key.type === 'action') return false;
+    if (key.type === 'modifier') return false;
+
+    // Space key: highlight when space is in input
+    if (key.id === 'space') {
+      return activeChars.has(' ');
+    }
+
     if (key.type !== 'char') return false;
-    
-    const enMatch = key.en && activeChars.has(key.en.toLowerCase());
-    const arMatch = key.ar && activeChars.has(key.ar);
-    
-    // Special handling for 'لا'
-    const specialArMatch = key.ar === 'لا' && activeChars.has('ل') && activeChars.has('ا');
-    
-    return enMatch || arMatch || specialArMatch;
+
+    const enMatch = key.en ? activeChars.has(key.en.toLowerCase()) : false;
+    const arMatch = key.ar ? activeChars.has(key.ar) : false;
+    // Special: 'لا' maps to B; highlight if both ل and ا are active OR 'لا' is active
+    const laMatch = key.ar === 'لا' && (activeChars.has('لا') || (activeChars.has('ل') && activeChars.has('ا')));
+
+    return enMatch || arMatch || laMatch;
   };
 
+  // Per-key pastel colors for gradient theme
+  const getPastelColor = (key: KeyDef, dark: boolean) => {
+    if (!key.en) return undefined;
+    const hue = (key.en.charCodeAt(0) * 17) % 360;
+    return dark
+      ? `hsl(${hue} 40% 18%)`
+      : `hsl(${hue} 60% 92%)`;
+  };
+
+  const isGradient = theme === 'gradient';
+
   return (
-    <div className="w-full overflow-x-auto pb-4 hide-scrollbar">
-      <div className="min-w-[800px] flex flex-col gap-1.5 p-4 bg-panel border border-panel-border rounded-[var(--panel-radius)] shadow-[var(--app-shadow)] panel-blur transition-all duration-300">
-        
+    <div className="w-full overflow-x-auto pb-2" style={{ WebkitOverflowScrolling: 'touch' }}>
+      <div className="min-w-[680px] flex flex-col gap-1.5 p-3 bg-panel border border-panel-border rounded-[var(--panel-radius)] shadow-[var(--app-shadow)] panel-blur transition-all duration-300">
         {KEYBOARD_ROWS.map((row, rowIndex) => (
           <div key={`row-${rowIndex}`} className="flex gap-1.5 w-full">
             {row.map((key) => {
               const active = isKeyActive(key);
-              
-              // Gradient theme gets random pastel tints for inactive keys
-              const isGradient = theme === 'gradient';
-              const randPastel = isGradient && !active && key.type === 'char' 
-                ? `hsl(${((key.en?.charCodeAt(0) || 0) * 17) % 360} 70% 90%)` 
-                : undefined;
-              const darkRandPastel = isGradient && !active && key.type === 'char' 
-                ? `hsl(${((key.en?.charCodeAt(0) || 0) * 17) % 360} 40% 20%)` 
-                : undefined;
+              const isSpaceKey = key.id === 'space';
+              const isActionOrModifier = key.type === 'action' || key.type === 'modifier';
+              // For gradient theme, char keys get unique pastel tints
+              const showPastel = isGradient && !active && key.type === 'char' && !isSpaceKey;
 
               return (
                 <motion.div
                   key={key.id}
                   className={cn(
-                    "relative flex flex-col justify-between p-2 min-w-[2.5rem] h-14 border rounded-[var(--key-radius)] transition-all duration-150 select-none",
-                    key.width || "flex-1",
-                    active 
-                      ? "bg-key-active border-brand text-key-active-ink shadow-inner z-10 scale-[0.98]" 
-                      : "bg-key-bg border-key-border text-key-ink shadow-[var(--key-shadow)] hover:bg-panel-hover hover:-translate-y-0.5",
-                    "retro-box-shadow" // Only applies if retro theme active due to CSS nesting
+                    "relative flex flex-col justify-between p-1.5 min-w-[2.2rem] h-12 border rounded-[var(--key-radius)] transition-all duration-150 select-none overflow-hidden",
+                    key.width ?? "flex-1",
+                    active
+                      ? "bg-key-active border-brand text-key-active-ink z-10 retro-box-shadow"
+                      : "bg-key-bg border-key-border text-key-ink shadow-[var(--key-shadow)] hover:brightness-110 hover:-translate-y-px"
                   )}
-                  style={
-                    isGradient && !active && key.type === 'char' 
-                      ? { backgroundColor: `var(--pastel-tint, ${randPastel})` } 
-                      : {}
-                  }
-                  animate={{
-                    y: active ? 2 : 0,
-                  }}
+                  animate={{ y: active ? 2 : 0, scale: active ? 0.97 : 1 }}
                   transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                  style={
+                    showPastel
+                      ? { backgroundColor: `var(--pastel-tint-${key.id})` }
+                      : undefined
+                  }
                 >
-                  {/* CSS Var hack for gradient dark mode pastel tinting */}
-                  {isGradient && !active && key.type === 'char' && (
+                  {/* Pastel tint via CSS var for gradient dark mode */}
+                  {showPastel && (
                     <style>{`
-                      .dark [data-key-id="${key.id}"] { --pastel-tint: ${darkRandPastel} !important; }
+                      :root { --pastel-tint-${key.id}: ${getPastelColor(key, false)}; }
+                      .dark { --pastel-tint-${key.id}: ${getPastelColor(key, true)} !important; }
                     `}</style>
                   )}
-                  
-                  <div data-key-id={key.id} className="absolute inset-0 pointer-events-none" />
 
-                  {key.type === 'action' || key.type === 'modifier' ? (
-                    <div className="w-full h-full flex items-center justify-center text-xs font-medium opacity-60">
+                  {isActionOrModifier ? (
+                    /* Action / Modifier keys — show label, full opacity */
+                    <div className="w-full h-full flex items-center justify-center text-[10px] font-semibold opacity-75 tracking-tight text-center leading-tight px-0.5">
                       {key.label}
                     </div>
+                  ) : isSpaceKey ? (
+                    /* Space key — show "Space" label and highlight when space pressed */
+                    <div className={cn(
+                      "w-full h-full flex items-center justify-center text-[10px] font-semibold tracking-tight",
+                      active ? "opacity-100" : "opacity-75"
+                    )}>
+                      Space
+                    </div>
                   ) : (
+                    /* Regular char key — English on top, Arabic on bottom */
                     <>
                       <div className={cn(
-                        "text-xs font-semibold leading-none",
-                        active ? "opacity-100" : "opacity-80"
+                        "text-[10px] font-semibold leading-none",
+                        active ? "opacity-100" : "opacity-90"
                       )}>
                         {key.en}
                       </div>
-                      <div className={cn(
-                        "text-sm font-bold text-right leading-none",
-                        active ? "opacity-100" : "opacity-60"
-                      )}>
-                        {key.ar}
-                      </div>
+                      {key.ar && (
+                        <div className={cn(
+                          "text-xs font-bold text-right leading-none",
+                          active ? "opacity-100" : "opacity-70"
+                        )}>
+                          {key.ar}
+                        </div>
+                      )}
                     </>
                   )}
                 </motion.div>
