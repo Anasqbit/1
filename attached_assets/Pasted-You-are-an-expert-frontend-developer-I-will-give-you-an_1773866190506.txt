@@ -1,0 +1,98 @@
+You are an expert frontend developer. I will give you an HTML concept/idea, and your job is to build a complete, fully functional single-file HTML website based on it.
+
+---
+
+## THE CONCEPT (from the reference file):
+
+A bilingual keyboard layout translator tool. The app:
+- Has a textarea where the user types text in English or Arabic
+- Automatically detects the language and converts it using the standard Arabic keyboard layout map (101-key)
+- Uses this exact English→Arabic mapping:
+  q=ض, w=ص, e=ث, r=ق, t=ف, y=غ, u=ع, i=ه, o=خ, p=ح, [=ج, ]=د,
+  a=ش, s=س, d=ي, f=ب, g=ل, h=ا, j=ت, k=ن, l=م, ;=ك, '=ط,
+  z=ئ, x=ء, c=ؤ, v=ر, b=لا, n=ى, m=ة, ,=و, .=ز, /=ظ, `=ذ
+- Has Swap, Copy, and Clear buttons
+- Displays a full interactive 101-key keyboard diagram showing the Arabic/English mapping for each key
+- Supports dark/light mode toggle
+- The keyboard diagram must visually show all rows of a real 101-key keyboard (function row, number row, QWERTY row, ASDF row, ZXCV row, spacebar row) with each key showing both the English character and its Arabic equivalent
+
+---
+
+## YOUR TASK:
+
+Build **4 completely different versions** of this exact tool. Each version must be a fully self-contained HTML page (no external files, all CSS and JS inline). All 4 versions must have the **same core functionality** but **completely different visual design**.
+
+---
+
+## VERSION REQUIREMENTS:
+
+### Version 1 — "Glassmorphism Dark"
+- Deep dark background (#0a0a0f) with purple/blue neon glows
+- Glass-effect cards with backdrop-filter blur
+- Neon-lit keyboard keys that glow on hover
+- Animated gradient borders
+- Futuristic, cyberpunk feel
+
+### Version 2 — "Apple Design" (as if designed by Apple)
+- Inspired by Apple's design language: SF Pro font stack, pure white/light gray background
+- Minimal, clean, lots of whitespace
+- Subtle shadows, rounded corners (like macOS/iOS apps)
+- Keyboard diagram styled like the macOS on-screen keyboard viewer
+- Frosted glass toolbar, smooth transitions
+- Colors: white, #f5f5f7, #1d1d1f, blue accent #0071e3
+- Must feel like it belongs on apple.com
+
+### Version 3 — "Retro Terminal"
+- Old-school green phosphor terminal aesthetic
+- Black background, monospace font (Courier New or similar)
+- Bright green (#00ff41) text and elements
+- Keyboard styled like old IBM mechanical keyboard diagrams
+- Scanline effect overlay
+- ASCII-art style borders and decorations
+
+### Version 4 — "Modern Gradient Card"
+- Vibrant, colorful gradient backgrounds (like the reference file but more polished)
+- Floating card design with deep shadows
+- Each keyboard key has a unique pastel color
+- Smooth animations: keys float, gradient shifts
+- Fun and playful, suitable for a productivity app landing page
+
+---
+
+## TECHNICAL REQUIREMENTS FOR ALL VERSIONS:
+
+1. The 101-key keyboard diagram must be **accurate and complete**, showing all rows:
+   - Row 1: Esc, F1–F12, PrtSc, ScrLk, Pause
+   - Row 2: ` 1 2 3 4 5 6 7 8 9 0 - = Backspace
+   - Row 3: Tab Q W E R T Y U I O P [ ] \
+   - Row 4: CapsLk A S D F G H J K L ; ' Enter
+   - Row 5: Shift Z X C V B N M , . / Shift
+   - Row 6: Ctrl, Win, Alt, Space, Alt, Win, Menu, Ctrl
+
+2. Each key on the keyboard diagram shows:
+   - The English character (top or main label)
+   - The Arabic equivalent below it (where applicable)
+   - Visual highlight when that key corresponds to the current input
+
+3. Bidirectional conversion logic (same as reference):
+   - Detect if input is mostly Latin → convert to Arabic
+   - Detect if input is mostly Arabic → convert to English
+   - Handle the "لا" compound for the 'b' key
+
+4. All buttons must work: Swap, Copy (with notification), Clear
+5. Dark/light mode toggle (except Version 3 which is always dark)
+6. Fully RTL support for Arabic text (dir="rtl" where needed)
+7. Responsive design (mobile-friendly)
+8. No external dependencies except Font Awesome CDN for icons:
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+---
+
+## OUTPUT FORMAT:
+
+Produce all 4 versions sequentially. For each version:
+1. Start with a comment: <!-- VERSION X: [Name] -->
+2. Output the complete <!DOCTYPE html>...</html> code
+3. Each file should be saveable as version1.html, version2.html, etc.
+
+Do not explain the code. Just output the 4 complete HTML files back to back.

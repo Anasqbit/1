@@ -1,0 +1,16 @@
+packages:
+  "framer-motion": "Smooth animations and transitions for theme switching and floating cards"
+  "clsx": "Utility for constructing className strings conditionally"
+  "tailwind-merge": "Utility to resolve Tailwind CSS class conflicts"
+
+images:
+  - path: "artifacts/keyboard-translator/public/images/cyberpunk-bg.png"
+    description: "Deep dark futuristic cyberpunk cityscape background, blurred and abstract, dark purples and neon blues"
+    aspect_ratio: "16:9"
+  - path: "artifacts/keyboard-translator/public/images/gradient-bg.png"
+    description: "Vibrant abstract mesh gradient background with soft flowing colorful shapes in pastel orange, pink, and purple"
+    aspect_ratio: "16:9"
+
+notes:
+  - "The app relies purely on client-side state and translation logic, no backend API is required."
+  - "Themes are heavily driven by CSS variables defined in index.css to allow sweeping visual changes."

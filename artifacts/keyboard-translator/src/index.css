@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap');
+@import "tailwindcss";
+
+@theme inline {
+  --font-inter: 'Inter', sans-serif;
+  --font-outfit: 'Outfit', sans-serif;
+  --font-mono: 'Space Mono', monospace;
+  --font-retro: 'Courier Prime', monospace;
+
+  /* Abstracted theme colors that change based on the active .theme-* class */
+  --color-canvas: hsl(var(--canvas));
+  --color-panel: hsl(var(--panel));
+  --color-panel-hover: hsl(var(--panel-hover));
+  --color-panel-border: hsl(var(--panel-border));
+  --color-ink: hsl(var(--ink));
+  --color-ink-muted: hsl(var(--ink-muted));
+  --color-brand: hsl(var(--brand));
+  --color-brand-foreground: hsl(var(--brand-foreground));
+  
+  --color-key-bg: hsl(var(--key-bg));
+  --color-key-border: hsl(var(--key-border));
+  --color-key-ink: hsl(var(--key-ink));
+  --color-key-active: hsl(var(--key-active));
+  --color-key-active-ink: hsl(var(--key-active-ink));
+  
+  --color-success: 142 71% 45%;
+  --color-danger: 0 84% 60%;
+}
+
+@layer base {
+  :root {
+    /* DEFAULT / APPLE LIGHT */
+    --canvas: 240 5% 96%; /* #f5f5f7 */
+    --panel: 0 0% 100%;
+    --panel-hover: 240 5% 98%;
+    --panel-border: 240 6% 90%;
+    --ink: 240 10% 10%;
+    --ink-muted: 240 5% 40%;
+    --brand: 211 100% 45%; /* #0071e3 */
+    --brand-foreground: 0 0% 100%;
+    
+    --key-bg: 0 0% 100%;
+    --key-border: 240 6% 85%;
+    --key-ink: 240 10% 10%;
+    --key-active: 211 100% 90%;
+    --key-active-ink: 211 100% 45%;
+
+    --font-app: var(--font-inter);
+    --panel-radius: 1rem;
+    --key-radius: 0.5rem;
+    --app-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+    --key-shadow: 0 1px 1px rgb(0 0 0 / 0.1);
+  }
+
+  .dark {
+    /* APPLE DARK */
+    --canvas: 240 5% 8%; 
+    --panel: 240 5% 12%;
+    --panel-hover: 240 5% 15%;
+    --panel-border: 240 5% 20%;
+    --ink: 0 0% 98%;
+    --ink-muted: 240 5% 60%;
+    --brand: 211 100% 55%; 
+    --brand-foreground: 0 0% 100%;
+    
+    --key-bg: 240 5% 18%;
+    --key-border: 240 5% 25%;
+    --key-ink: 0 0% 98%;
+    --key-active: 211 100% 25%;
+    --key-active-ink: 211 100% 80%;
+  }
+
+  .theme-apple {
+    /* Uses the default root / dark variables above */
+    --font-app: var(--font-inter);
+  }
+
+  .theme-glass {
+    /* GLASSMORPHISM CYBERPUNK */
+    --canvas: 240 20% 5%; /* Fallback */
+    --panel: 240 20% 10% / 0.4;
+    --panel-hover: 240 20% 15% / 0.5;
+    --panel-border: 280 100% 70% / 0.2;
+    --ink: 0 0% 100%;
+    --ink-muted: 240 20% 70%;
+    --brand: 280 100% 60%; /* Neon purple */
+    --brand-foreground: 0 0% 100%;
+    
+    --key-bg: 240 20% 15% / 0.4;
+    --key-border: 280 100% 70% / 0.3;
+    --key-ink: 0 0% 100%;
+    --key-active: 280 100% 60% / 0.3;
+    --key-active-ink: 280 100% 80%;
+
+    --font-app: var(--font-mono);
+    --panel-radius: 1.5rem;
+    --key-radius: 0.375rem;
+    --app-shadow: 0 0 20px 0 rgba(192, 132, 252, 0.1);
+    --key-shadow: 0 0 10px rgba(192, 132, 252, 0.2);
+  }
+
+  .theme-glass.light {
+      /* Glassmorphism light mode variant */
+      --canvas: 240 20% 98%; 
+      --panel: 0 0% 100% / 0.6;
+      --panel-hover: 0 0% 100% / 0.8;
+      --panel-border: 280 100% 60% / 0.2;
+      --ink: 240 20% 10%;
+      --ink-muted: 240 10% 40%;
+      --brand: 280 100% 60%;
+      --brand-foreground: 0 0% 100%;
+      
+      --key-bg: 0 0% 100% / 0.5;
+      --key-border: 280 100% 60% / 0.3;
+      --key-ink: 240 20% 10%;
+      --key-active: 280 100% 60% / 0.2;
+      --key-active-ink: 280 100% 40%;
+  }
+
+  .theme-retro {
+    /* RETRO TERMINAL (Always Dark) */
+    --canvas: 0 0% 0%; 
+    --panel: 0 0% 0%;
+    --panel-hover: 120 100% 2% / 1;
+    --panel-border: 135 100% 50%;
+    --ink: 135 100% 50%; /* #00ff41 */
+    --ink-muted: 135 100% 50% / 0.6;
+    --brand: 135 100% 50%; 
+    --brand-foreground: 0 0% 0%;
+    
+    --key-bg: 0 0% 0%;
+    --key-border: 135 100% 50%;
+    --key-ink: 135 100% 50%;
+    --key-active: 135 100% 50%;
+    --key-active-ink: 0 0% 0%;
+
+    --font-app: var(--font-retro);
+    --panel-radius: 0;
+    --key-radius: 0;
+    --app-shadow: none;
+    --key-shadow: none;
+  }
+
+  .theme-gradient {
+    /* MODERN GRADIENT */
+    --canvas: 0 0% 98%; /* Fallback */
+    --panel: 0 0% 100%;
+    --panel-hover: 0 0% 99%;
+    --panel-border: 0 0% 100% / 0;
+    --ink: 220 40% 20%;
+    --ink-muted: 220 20% 50%;
+    --brand: 320 80% 60%; 
+    --brand-foreground: 0 0% 100%;
+    
+    --key-bg: 0 0% 100%;
+    --key-border: 0 0% 0% / 0.05;
+    --key-ink: 220 40% 30%;
+    --key-active: 320 80% 95%;
+    --key-active-ink: 320 80% 50%;
+
+    --font-app: var(--font-outfit);
+    --panel-radius: 2rem;
+    --key-radius: 0.75rem;
+    --app-shadow: 0 20px 40px -10px rgb(0 0 0 / 0.08), 0 0 20px -5px rgb(0 0 0 / 0.04);
+    --key-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), inset 0 -2px 0 0 rgb(0 0 0 / 0.05);
+  }
+
+  .theme-gradient.dark {
+    --canvas: 220 40% 5%; 
+    --panel: 220 40% 10%;
+    --panel-hover: 220 40% 12%;
+    --panel-border: 0 0% 100% / 0.05;
+    --ink: 0 0% 100%;
+    --ink-muted: 220 20% 70%;
+    --brand: 320 80% 60%; 
+    --brand-foreground: 0 0% 100%;
+    
+    --key-bg: 220 40% 15%;
+    --key-border: 0 0% 0% / 0.2;
+    --key-ink: 0 0% 100%;
+    --key-active: 320 80% 30%;
+    --key-active-ink: 320 80% 90%;
+    
+    --app-shadow: 0 20px 40px -10px rgb(0 0 0 / 0.4);
+    --key-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3), inset 0 -2px 0 0 rgb(0 0 0 / 0.2);
+  }
+
+  body {
+    @apply bg-canvas text-ink antialiased min-h-screen transition-colors duration-300;
+    font-family: var(--font-app);
+  }
+}
+
+/* Specific Theme Utilities */
+
+.theme-glass .panel-blur {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.theme-glass .glow-text {
+  text-shadow: 0 0 8px hsl(var(--brand) / 0.8);
+}
+
+.theme-retro .retro-text-shadow {
+  text-shadow: 0 0 5px hsl(var(--ink)), 0 0 10px hsl(var(--ink) / 0.5);
+}
+
+.theme-retro .retro-box-shadow {
+  box-shadow: 0 0 10px hsl(var(--brand) / 0.3), inset 0 0 10px hsl(var(--brand) / 0.1);
+}
+
+.scanlines {
+  background: linear-gradient(
+    to bottom,
+    rgba(255,255,255,0),
+    rgba(255,255,255,0) 50%,
+    rgba(0,0,0,0.1) 50%,
+    rgba(0,0,0,0.1)
+  );
+  background-size: 100% 4px;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 50;
+}
+
+/* Gradient backgrounds for specific themes */
+.bg-gradient-cyberpunk {
+  background-image: 
+    radial-gradient(circle at 15% 50%, rgba(76, 29, 149, 0.15), transparent 25%),
+    radial-gradient(circle at 85% 30%, rgba(29, 78, 216, 0.15), transparent 25%);
+}
+
+.bg-gradient-modern {
+  background-image: 
+    radial-gradient(circle at 0% 0%, rgba(253, 164, 175, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 100% 0%, rgba(192, 132, 252, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 100% 100%, rgba(147, 197, 253, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 0% 100%, rgba(253, 186, 116, 0.15) 0%, transparent 40%);
+}
+
+.dark .bg-gradient-modern {
+  background-image: 
+    radial-gradient(circle at 0% 0%, rgba(225, 29, 72, 0.1) 0%, transparent 40%),
+    radial-gradient(circle at 100% 0%, rgba(126, 34, 206, 0.1) 0%, transparent 40%),
+    radial-gradient(circle at 100% 100%, rgba(29, 78, 216, 0.1) 0%, transparent 40%),
+    radial-gradient(circle at 0% 100%, rgba(194, 65, 12, 0.1) 0%, transparent 40%);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--ink-muted) / 0.3);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--ink-muted) / 0.5);
+}
