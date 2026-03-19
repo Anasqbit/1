@@ -1,3 +1,49 @@
-<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="180" height="180" rx="36" fill="#FF3C00"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" fill="none" viewBox="0 0 200 200">
+<!-- SVG created with Arrow, by QuiverAI (https://quiver.ai) -->
+  <path d="m160.3 30.34c-15.82-15.81-36.93-24.58-61.43-24.58-48.1 0-88.89 39.21-88.89 89.86 0 29.35 12.55 57.66 38.5 66.98l2.51 0.71v22.65c0 4.92 5.15 9.62 11.93 7.66l37.98-28.46h70.62c10.55 0 17.98-8.94 17.98-17.35v-117.5h-29.2z" fill="url(#paint0_linear_1151_12)"/>
+  <path d="m189.5 30.34-64.26 134.7h46.28c10.55 0 17.98-8.94 17.98-17.35v-117.4z" fill="#00B5FE"/>
+  <path d="m168.3 72.72 21.26-42.38h-29.2c-14.55-14.55-34.15-24.58-61.43-24.58-48.1 0-88.89 39.21-88.89 89.86 0 29.35 12.55 57.66 38.5 66.98l2.51 0.71v22.66c0 4.91 5.15 9.61 11.93 7.65l37.98-28.46h24.25l44.15-92.22-1.06-0.22z" fill="url(#paint1_linear_1151_12)"/>
+  <path d="m98.78 21.04c-39.86 0-72.59 33.87-72.59 74.92 0 26.54 12.03 52.93 40.68 52.93v22.54l28.25-21.17c1-0.74 1.96-0.74 2.2-0.74h35.09l36.88-76.61c-9.32-28.82-35.35-51.87-70.51-51.87z" fill="#fff"/>
+  <path d="m120.2 149.5 4.93 15.54 7.21-15.54h-12.14z" fill="url(#paint2_linear_1151_12)"/>
+  <path d="m165.9 62.95 23.59-32.61-20.7 42.27-2.89-9.66z" fill="url(#paint3_linear_1151_12)"/>
+  <path d="m93.43 55.71-26.95 64.6h12.43l5.8-14.48h29.23l5.8 14.48h12.97l-27.34-64.6h-11.94zm-4.65 39.92 10.11-26.9 10.62 26.9h-20.73z" fill="url(#paint4_linear_1151_12)"/>
+  <defs>
+    <linearGradient id="paint0_linear_1151_12" x1="10" x2="189.5" y1="99.76" y2="99.76" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#005DAC" offset="0"/>
+      <stop stop-color="#0059A9" offset=".25"/>
+      <stop stop-color="#00509E" offset=".497"/>
+      <stop stop-color="#00418C" offset=".741"/>
+      <stop stop-color="#002D73" offset=".982"/>
+      <stop stop-color="#002B71" offset="1"/>
+    </linearGradient>
+    <linearGradient id="paint1_linear_1151_12" x1="10" x2="189.5" y1="100.4" y2="100.4" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0057A7" offset="0"/>
+      <stop stop-color="#0054A4" offset=".258"/>
+      <stop stop-color="#004D9A" offset=".486"/>
+      <stop stop-color="#004088" offset=".704"/>
+      <stop stop-color="#002E70" offset=".915"/>
+      <stop stop-color="#002564" offset="1"/>
+    </linearGradient>
+    <linearGradient id="paint2_linear_1151_12" x1="120.2" x2="132.4" y1="157.3" y2="157.3" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#003164" offset="0"/>
+      <stop stop-color="#002F5F" offset=".271"/>
+      <stop stop-color="#002A52" offset=".61"/>
+      <stop stop-color="#00233E" offset=".983"/>
+      <stop stop-color="#00233D" offset="1"/>
+    </linearGradient>
+    <linearGradient id="paint3_linear_1151_12" x1="166.7" x2="189.5" y1="49.42" y2="49.42" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#002564" offset="0"/>
+      <stop stop-color="#002B6E" offset=".266"/>
+      <stop stop-color="#003987" offset=".738"/>
+      <stop stop-color="#049" offset="1"/>
+    </linearGradient>
+    <linearGradient id="paint4_linear_1151_12" x1="66.48" x2="132.7" y1="87.9" y2="87.9" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0057A7" offset="0"/>
+      <stop stop-color="#0054A4" offset=".258"/>
+      <stop stop-color="#004D9A" offset=".486"/>
+      <stop stop-color="#004088" offset=".704"/>
+      <stop stop-color="#002E70" offset=".915"/>
+      <stop stop-color="#002564" offset="1"/>
+    </linearGradient>
+  </defs>
 </svg>
